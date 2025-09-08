@@ -1,46 +1,185 @@
-# Getting Started with Create React App
+# FlowBoard - Lightweight Kanban Task Management
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+A modern, responsive Kanban board application built with React and TypeScript, featuring native HTML5 drag-and-drop functionality and localStorage persistence.
 
-## Available Scripts
+## 🚀 Features
 
-In the project directory, you can run:
+- **Three-Column Layout**: To Do, In Progress, and Done columns
+- **Task Management**: Add, move, and delete tasks with ease
+- **Drag & Drop**: Native HTML5 drag-and-drop without external libraries
+- **Button Navigation**: Alternative task movement using arrow buttons
+- **Persistent Storage**: Tasks are saved to localStorage automatically
+- **Responsive Design**: Works seamlessly on desktop, tablet, and mobile
+- **Accessibility**: Full keyboard navigation and screen reader support
+- **Modern UI**: Clean, professional design with smooth animations
+- **TypeScript**: Full type safety throughout the application
 
-### `npm start`
+## 🛠️ Technology Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+- **React 18** - Modern React with hooks and functional components
+- **TypeScript** - Full type safety and better developer experience
+- **CSS3** - Custom CSS with modern features (Grid, Flexbox, CSS Variables)
+- **HTML5 Drag API** - Native drag-and-drop implementation
+- **localStorage** - Client-side data persistence
+- **React Scripts** - Zero-configuration build setup
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+## 📋 Requirements Met
 
-### `npm test`
+✅ **Three fixed columns** (To Do, In Progress, Done)  
+✅ **Add tasks** to the To Do column  
+✅ **Move tasks** between columns (drag-drop AND buttons)  
+✅ **Delete tasks** from any column  
+✅ **Component state management** with React hooks  
+✅ **localStorage persistence** - no external API needed  
+✅ **No external drag-drop libraries** - pure HTML5 implementation  
+✅ **Runs with `npm run start`**  
+✅ **TypeScript** for better code quality  
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## 🚀 Quick Start
 
-### `npm run build`
+### Prerequisites
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+- Node.js (version 16 or higher)
+- npm (comes with Node.js)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### Installation & Running
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+1. **Clone or download** this repository
+2. **Navigate** to the project directory
+3. **Install dependencies**:
+   ```bash
+   npm install
+   ```
+4. **Start the development server**:
+   ```bash
+   npm start
+   ```
+5. **Open your browser** to `http://localhost:3000`
 
-### `npm run eject`
+The application will automatically open in your default browser and reload when you make changes.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## 📱 Usage Guide
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+### Adding Tasks
+1. Click the **"+ Add a task"** button in the To Do column
+2. Enter your task title (up to 100 characters)
+3. Click **"Add Task"** or press Enter
+4. The task appears in the To Do column
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+### Moving Tasks
+**Method 1: Drag & Drop**
+- Click and drag any task to a different column
+- Visual feedback shows valid drop zones
+- Release to move the task
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+**Method 2: Arrow Buttons**
+- Hover over a task to see arrow buttons
+- Click **←** to move left or **→** to move right
+- Tasks move between adjacent columns
 
-## Learn More
+### Deleting Tasks
+- Click the **×** button on any task
+- Confirm the deletion in the popup dialog
+- Task is permanently removed
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Board Management
+- **Reset Board**: Click "Reset Board" to clear all tasks
+- **Statistics**: View task counts in the header
+- **Auto-save**: All changes are saved automatically
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## 🏗️ Architecture Overview
+
+### Component Hierarchy
+```
+App
+└── Board
+    ├── AddTaskForm (in To Do column)
+    ├── Column (×3)
+    │   └── TaskCard (multiple)
+    └── DragOverlay (when dragging)
+```
+
+### State Management
+- **useBoardState**: Custom hook managing all board operations
+- **useDragAndDrop**: Custom hook for drag-and-drop functionality
+- **useReducer**: Centralized state updates with actions
+- **localStorage**: Automatic persistence layer
+
+### Key Design Patterns
+- **Custom Hooks**: Separation of concerns and reusability
+- **Reducer Pattern**: Predictable state updates
+- **Compound Components**: Flexible component composition
+- **Accessibility First**: ARIA labels, keyboard navigation, screen reader support
+
+## 🎨 Design Decisions
+
+### Why Custom Drag & Drop?
+- **No external dependencies** as per requirements
+- **Better performance** - no library overhead
+- **Full control** over UX and accessibility
+- **Native browser support** for modern features
+
+### State Management Choice
+- **useReducer** over useState for complex state
+- **Custom hooks** for business logic separation
+- **TypeScript interfaces** for type safety
+- **Immutable updates** for predictable behavior
+
+### CSS Architecture
+- **Component-scoped CSS** for maintainability
+- **CSS Grid & Flexbox** for responsive layouts
+- **CSS Custom Properties** for theming
+- **Mobile-first** responsive design
+
+## 🔧 Available Scripts
+
+- `npm start` - Start development server
+- `npm run build` - Build for production
+- `npm test` - Run test suite
+- `npm run eject` - Eject from Create React App (not recommended)
+
+## 📊 Performance Features
+
+- **Optimized Re-renders**: Proper React patterns to minimize updates
+- **Efficient Drag Handling**: Event delegation and cleanup
+- **Lazy State Updates**: Debounced localStorage writes
+- **Memory Management**: Proper event listener cleanup
+
+## ♿ Accessibility Features
+
+- **Keyboard Navigation**: Full keyboard support for all interactions
+- **Screen Reader Support**: Proper ARIA labels and live regions
+- **High Contrast Mode**: Supports system preferences
+- **Reduced Motion**: Respects user motion preferences
+- **Focus Management**: Clear focus indicators and logical tab order
+
+## 📱 Browser Support
+
+- **Chrome** 88+
+- **Firefox** 85+
+- **Safari** 14+
+- **Edge** 88+
+
+## 🐛 Known Limitations
+
+- Tasks are stored locally (cleared if browser data is cleared)
+- No user authentication or multi-user support
+- No task priorities or due dates
+- No task descriptions or attachments
+
+## 🔮 Future Enhancements
+
+- Task search and filtering
+- Task priorities and labels
+- Keyboard shortcuts
+- Export/import functionality
+- Dark mode theme
+- Task templates
+
+## 📄 License
+
+This project is created for educational purposes as part of an AI Native development assignment.
+
+---
+
+**Built with ❤️ using React, TypeScript, and modern web standards**
